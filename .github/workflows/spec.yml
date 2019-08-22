@@ -1,0 +1,47 @@
+name: Run Specs
+
+on:
+  push:
+    branches:
+      - "*"
+      - "!refs/pull/*"
+  pull_request:
+    branches: 
+      - "*"
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby:
+          # TODO: add 2.0.0
+          # - 2.0.x
+          - 2.3.x
+          - 2.4.x
+          - 2.6.x
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout git
+        uses: actions/checkout@v1
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+
+      - name: Install Bundler 1.17
+        run: gem install bundler -v "~> 1.17"
+
+      - name: Update git submodules
+        run: git submodule update --init
+
+      - name: Setup test_repo
+        run: ./.github/scripts/setup_test_repo.sh
+
+      - name: Run bundle install
+        run: bundle install --jobs 4 --retry 3 --without debugging documentation
+
+      - name: Run Specs + Rubocop
+        run: bundle exec rake spec
