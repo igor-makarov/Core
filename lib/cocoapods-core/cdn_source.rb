@@ -360,7 +360,7 @@ module Pod
         debug "CDN: #{name} Redirecting from #{file_remote_url} to #{redirect_location}"
         download_retrying_retryable_errors(partial_url, redirect_location, etag)
       when 304
-        debug "CDN: #{name} Relative path not modified: #{partial_url}"
+        debug "CDN: #{name} Relative ppath not modified: #{partial_url}"
         # We need to update the file modification date, as it is later used for freshness
         # optimization. See #initialize for more information.
         FileUtils.touch path
