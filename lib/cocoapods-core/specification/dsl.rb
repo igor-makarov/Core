@@ -683,11 +683,7 @@ module Pod
           end
         end
 
-        configurations_option = version_requirements.find { |option| option.is_a?(Hash) && option.key?(:configurations) }
-        whitelisted_configurations = if configurations_option
-                                       version_requirements.delete(configurations_option)
-                                       Array(configurations_option.delete(:configurations)).map { |c| c.to_s.downcase }
-                                     end
+        whitelisted_configurations = nil
 
         dependency_options = version_requirements.reject { |req| req.is_a?(String) }
         dependency_options.each do |dependency_option|
@@ -699,9 +695,12 @@ module Pod
               raise Informative, 'Podspecs cannot specify the source of dependencies. The `:git` option is not supported.'\
                                  ' `:git` can be used in the Podfile instead to override global dependencies.'
             end
+            whitelisted_configurations = if dependency_option.key?(:configurations)
+                                           Array(dependency_option.delete(:configurations)).map { |c| c.to_s.downcase }
+                                         end
+          else
+            raise Informative, "Unsupported version requirements. #{version_requirements.inspect} is not valid."
           end
-
-          raise Informative, "Unsupported version requirements. #{version_requirements.inspect} is not valid."
         end
 
         attributes_hash['dependencies'] ||= {}

@@ -220,7 +220,7 @@ module Pod
       def dependencies
         value = value_for_attribute(:dependencies)
         value.map do |name, requirements|
-          Dependency.new(name, requirements)
+          Dependency.new(name, *requirements)
         end
       end
 
