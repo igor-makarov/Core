@@ -997,10 +997,10 @@ module Pod
           file = podspec_path_from_options(options)
           spec = Specification.from_file(file)
           subspec_names = options[:subspecs] || options[:subspec]
-          specs = if subspec_names.blank?
+          subspec_names = [subspec_names] if subspec_names.is_a?(String)
+          specs = if subspec_names.nil? || !subspec_names.any?
                     [spec]
                   else
-                    subspec_names = [subspec_names] if subspec_names.is_a?(String)
                     subspec_names.map { |subspec_name| spec.subspec_by_name("#{spec.name}/#{subspec_name}") }
                   end
           specs.map do |subspec|
