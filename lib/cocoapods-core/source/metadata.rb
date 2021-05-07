@@ -29,7 +29,7 @@ module Pod
       end
 
       def to_hash
-        hash = ActiveSupport::HashWithIndifferentAccess.new
+        hash = Hash.new
         hash['min'] = @minimum_cocoapods_version.to_s if @minimum_cocoapods_version
         hash['max'] = @maximum_cocoapods_version.to_s if @maximum_cocoapods_version
         hash['last'] = @latest_cocoapods_version.to_s if @latest_cocoapods_version
