@@ -1,3 +1,4 @@
+require 'i18n'
 require 'active_support/core_ext/string/strip.rb'
 
 require 'cocoapods-core/specification/consumer'
@@ -200,6 +201,7 @@ module Pod
     #
     def c99ext_identifier(name)
       return nil if name.nil?
+      I18n.config.enforce_available_locales = false
       I18n.transliterate(name).gsub(/^([0-9])/, '_\1').
         gsub(/[^a-zA-Z0-9_]/, '_').gsub(/_+/, '_')
     end
