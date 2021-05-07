@@ -1,3 +1,5 @@
+require 'cocoapods-core/deep_stringify_all_keys'
+
 module Pod
   class Podfile
     # The methods defined in this file and the order of the methods is
@@ -914,7 +916,7 @@ module Pod
       #
       def plugin(name, options = {})
         hash_plugins = get_hash_value('plugins') || {}
-        (hash_plugins[name] ||= {}).merge!(options.deep_stringify_keys)
+        (hash_plugins[name] ||= {}).merge!(options.deep_stringify_all_keys)
         set_hash_value('plugins', hash_plugins)
       end
 
