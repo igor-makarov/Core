@@ -5,7 +5,6 @@ module Pod
       # also provides logic to implement any required logic.
       #
       class Attribute
-        require 'active_support/inflector/inflections'
 
         # Spec types currently supported.
         #
@@ -198,7 +197,13 @@ module Pod
         #         on the DSL.
         #
         def writer_singular_form
-          "#{name.to_s.singularize}=" if singularize?
+          if singularize?
+            if @singularize.is_a?(String)
+              "#{@singularize}="
+            else
+              "#{name.to_s.delete_suffix('s')}="
+            end
+          end
         end
       end
     end

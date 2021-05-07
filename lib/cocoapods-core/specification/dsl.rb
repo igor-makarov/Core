@@ -856,7 +856,7 @@ module Pod
       #
       attribute :libraries,
                 :container   => Array,
-                :singularize => true,
+                :singularize => 'library',
                 :inherited => true
 
       #------------------#
@@ -1301,7 +1301,7 @@ module Pod
       attribute :vendored_libraries,
                 :container => Array,
                 :file_patterns => true,
-                :singularize => true
+                :singularize => 'vendored_library'
 
       #------------------#
 
