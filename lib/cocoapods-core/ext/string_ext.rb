@@ -28,8 +28,8 @@ class String
   # Simple pluralizer
   # 
   # Adds an 's' if the number is different from 1
-  def pluralize(count) 
-    count == 1 ? self : "#{self}s"
+  def pluralize(count, plural = nil) 
+    count == 1 ? self : (plural || "#{self}s")
   end
 end
   
