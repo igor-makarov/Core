@@ -24,5 +24,12 @@ class String
       stripped.freeze if frozen?
     end
   end
+
+  # Simple pluralizer
+  # 
+  # Adds an 's' if the number is different from 1
+  def pluralize(count) 
+    count == 1 ? self : "#{self}s"
+  end
 end
   

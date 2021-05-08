@@ -1,12 +1,12 @@
 require 'i18n'
 
+require 'cocoapods-core/ext/string_ext'
 require 'cocoapods-core/specification/consumer'
 require 'cocoapods-core/specification/dsl'
 require 'cocoapods-core/specification/linter'
 require 'cocoapods-core/specification/root_attribute_accessors'
 require 'cocoapods-core/specification/set'
 require 'cocoapods-core/specification/json'
-require 'cocoapods-core/strip.rb'
 
 module Pod
   # The Specification provides a DSL to describe a Pod. A pod is defined as a

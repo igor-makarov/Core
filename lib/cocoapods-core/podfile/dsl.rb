@@ -1,4 +1,4 @@
-require 'cocoapods-core/deep_stringify_all_keys'
+require 'cocoapods-core/ext/hash_ext'
 
 module Pod
   class Podfile

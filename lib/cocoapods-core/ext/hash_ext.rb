@@ -8,5 +8,16 @@ class Hash
         end
     end
     stringified_hash
+  end
+
+  def deep_symbolify_all_keys
+    symbolified_hash = {}
+    each do |k, v|
+      symbolified_hash[k.to_sym] = v
+        if v.class == Hash
+          symbolified_hash[k.to_sym].deep_symbolify_all_keys
+        end
+    end
+    symbolified_hash
   end 
 end

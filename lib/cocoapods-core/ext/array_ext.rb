@@ -9,7 +9,7 @@ class Array
   #   ['one', 'two'].to_sentence          # => "one and two"
   #   ['one', 'two', 'three'].to_sentence # => "one, two, and three"
   #
-  def to_sentence()
+  def to_sentence
     case length
     when 0, 1
       +join('')
