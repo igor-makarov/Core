@@ -1,4 +1,4 @@
-require 'cocoapods-core/ext/hash_ext'
+require 'cocoapods-core/core_ext/hash_ext'
 
 module Pod
   class Podfile

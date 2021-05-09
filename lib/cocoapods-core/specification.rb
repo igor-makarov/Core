@@ -1,6 +1,6 @@
 require 'i18n'
 
-require 'cocoapods-core/ext/string_ext'
+require 'cocoapods-core/core_ext/string_ext'
 require 'cocoapods-core/specification/consumer'
 require 'cocoapods-core/specification/dsl'
 require 'cocoapods-core/specification/linter'

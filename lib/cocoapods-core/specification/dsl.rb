@@ -1,4 +1,4 @@
-require 'cocoapods-core/ext/array_ext'
+require 'cocoapods-core/core_ext/array_ext'
 require 'cocoapods-core/specification/dsl/attribute_support'
 require 'cocoapods-core/specification/dsl/attribute'
 require 'cocoapods-core/specification/dsl/platform_proxy'
